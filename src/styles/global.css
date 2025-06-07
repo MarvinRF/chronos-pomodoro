@@ -24,3 +24,6 @@ body {
   flex-direction: column;
   gap: 2.4rem;
 }
+.formRow {
+  gap: 1rem;
+}

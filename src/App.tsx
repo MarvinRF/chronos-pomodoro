@@ -26,7 +26,7 @@ export const App = () => {
         <form action='' className='form'>
           <div className='formRow'>
             <DefaultInput
-              label={'task'}
+              labelText={'Nome da Tarefa:'}
               id={'task'}
               type='text'
               placeholder={'Digite o nome da Tarefa'}
