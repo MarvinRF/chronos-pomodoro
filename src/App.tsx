@@ -1,7 +1,11 @@
+import { Heading } from './components/Heading';
+import './styles/global.css';
+import './styles/theme.css';
+
 export const App = () => {
   return (
     <>
-      <h1>App</h1>
+      <Heading>Olá mundo</Heading>
     </>
   );
 };
