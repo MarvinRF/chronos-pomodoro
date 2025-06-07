@@ -5,6 +5,8 @@ import type { ReactNode } from 'react';
 type ContainerProps = {
   children: ReactNode;
 };
+
+//Desestruturação direta na função: deixa mais limpo.
 export const Container = ({ children }: ContainerProps) => {
   return (
     <div className={styles.container}>
