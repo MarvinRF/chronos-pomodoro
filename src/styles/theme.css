@@ -1,4 +1,5 @@
 :root {
+  --background-image: url('/lake-louise-dark.jpg');
   --background: #151515;
   --surface: #1f251c;
   --gray-dark: #686d76;
@@ -26,7 +27,7 @@
 }
 
 :root[data-theme='light'] {
-  background-image: url('/lake-louise-light.jpg');
+  --background-image: url('/lake-louise-light.jpg');
   --background: #fffdf0;
   --surface: #ffffff;
   --gray-dark: #353536;
@@ -37,7 +38,7 @@
 
   --text-default: #1a1f25;
   --text-muted: #4b5563;
-  --text-special: #f97300;
+  --text-special: #f0de36;
 
   --success: #16a34a;
   --warning: #facc15;
