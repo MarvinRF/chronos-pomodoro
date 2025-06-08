@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  font-size: 4.2rem;
+  font-size: 3.3rem;
   font-weight: bold;
   text-decoration: none;
   color: var(--background);
@@ -26,4 +26,7 @@
 .logoLink svg {
   width: 6.4rem;
   height: 6.4rem;
+}
+.logoLink span {
+  margin-top: 1.2rem;
 }
