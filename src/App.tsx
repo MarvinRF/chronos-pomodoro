@@ -9,6 +9,7 @@ import { Menu } from './components/Menu';
 
 import './styles/global.css';
 import './styles/theme.css';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   return (
@@ -43,9 +44,13 @@ export const App = () => {
           </span>
           <span className='formRow'>
             <DefaultButton icon={<Play />} type={'button'} />
-            <DefaultButton icon={<Pause />} type={'button'} color='red' />
+            {/* <DefaultButton icon={<Pause />} type={'button'} color='red' /> */}
           </span>
         </form>
+      </Container>
+
+      <Container>
+        <Footer />
       </Container>
     </>
   );
