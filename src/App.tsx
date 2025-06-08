@@ -1,6 +1,8 @@
+import { Pause, Play } from 'lucide-react';
 import { Container } from './components/Container';
 import { CountDown } from './components/CountDown';
 import { Cycles } from './components/Cycles';
+import { DefaultButton } from './components/DefaultButton';
 import DefaultInput from './components/DefaultInput';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
@@ -40,7 +42,8 @@ export const App = () => {
             <Cycles />
           </span>
           <span className='formRow'>
-            <button>enviar</button>
+            <DefaultButton icon={<Play />} type={'button'} />
+            <DefaultButton icon={<Pause />} type={'button'} color='red' />
           </span>
         </form>
       </Container>

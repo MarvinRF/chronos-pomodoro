@@ -1,30 +1,20 @@
 import styles from './styles.module.css';
 
 type DefaultButtonProps = {
-  labelText?: string;
-  id: string;
-  placeholder: string;
-} & React.ComponentProps<'input'>;
+  icon: React.ReactNode;
+  type: 'button' | 'submit' | 'reset';
+  color?: 'green' | 'red';
+} & React.ComponentProps<'button'>;
 
-const DefaultButton = ({
-  labelText,
-  id,
+export const DefaultButton = ({
   type,
-  placeholder,
-  ...inputProps
+  icon,
+  color = 'green',
+  ...buttonProps
 }: DefaultButtonProps) => {
   return (
-    <>
-      {labelText && <label htmlFor='input'>{labelText}</label>}
-      <input
-        className={styles.input}
-        placeholder={placeholder}
-        id={id}
-        type={type}
-        {...inputProps}
-      />
-    </>
+    <button className={styles[color]} type={type} {...buttonProps}>
+      {icon}
+    </button>
   );
 };
-
-export default DefaultButton;
