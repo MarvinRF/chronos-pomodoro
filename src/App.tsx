@@ -1,6 +1,5 @@
-import { AboutPomodoro } from './pages/AboutPomodoro';
+import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider';
 import { Home } from './pages/Home';
-import NotFound from './pages/NotFound';
 
 import './styles/global.css';
 import './styles/theme.css';
@@ -8,7 +7,9 @@ import './styles/theme.css';
 export const App = () => {
   return (
     <>
-      <Home />
+      <TaskContextProvider>
+        <Home />
+      </TaskContextProvider>
     </>
   );
 };
