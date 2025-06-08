@@ -30,7 +30,7 @@ export const App = () => {
         <form action='' className='form'>
           <span className='formRow'>
             <DefaultInput
-              labelText={'Nome da Tarefa:'}
+              labelText={`Nome da Tarefa:`}
               id={'task'}
               type='text'
               placeholder={'Digite o nome da Tarefa'}

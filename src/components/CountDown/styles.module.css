@@ -8,7 +8,7 @@
   font-size: clamp(8rem, 30vw, 16rem);
   font-weight: bold;
   text-decoration: none;
-  color: var(--primary);
+  color: var(--text-special);
   transition: all 0.2s ease-in-out;
 }
 

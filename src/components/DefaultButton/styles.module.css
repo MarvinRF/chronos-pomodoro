@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.8rem;
-  min-width: 24rem;
+  min-width: 29rem;
   border-radius: 0.8rem;
   margin: 4rem 0;
   cursor: pointer;
@@ -19,7 +19,7 @@
 }
 .green {
   composes: button;
-  background-color: var(--primary);
+  background-color: var(--gray-light);
 }
 
 .button svg {

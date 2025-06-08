@@ -1,37 +1,53 @@
 :root {
-  --gray-100: #e6e9f0;
-  --gray-200: #cdd3e1;
-  --gray-300: #aab3cc;
-  --gray-400: #555f7d;
-  --gray-500: #454f6a;
-  --gray-600: #363d56;
-  --gray-700: #272f43;
-  --gray-800: #181f2e;
-  --gray-900: #0a0f1a;
+  --background: #151515;
+  --surface: #1f251c;
+  --gray-dark: #686d76;
+  --gray-light: #a1a6af;
 
-  --primary-light: #4de7b7;
-  --primary: #0da170;
-  --primary-dark: #065f46;
+  --primary: #161718;
+  --highlight: #f97300;
 
-  --link-color: #10b981;
-  --link-hover: #0b8a60;
+  --text-default: #c0c0c0;
+  --text-muted: #a1a6af;
+  --text-special: #f97300;
+  --text-footer: #e7e7e7;
 
   --success: #22c55e;
-  --warning: #eab308;
-  --error: #991b1b;
-  --info: #0ea5e9;
+  --warning: #facc15;
+  --error: #ef4444;
+  --info: #3b82f6;
 
-  --text-over-primary: #0a0f1a;
-  --text-over-primary-dark: #e6e9f0;
-  --text-over-primary-light: #0a0f1a;
-  --text-over-success: #0a0f1a;
-  --text-over-warning: #0a0f1a;
-  --text-over-error: #e6e9f0;
-  --text-over-info: #0a0f1a;
+  --link-color: var(--highlight);
+  --link-hover: #ff8c1a;
 
-  --text-default: #e6e9f0;
-  --text-muted: #aab3cc;
+  --border-color: #2a2e26;
+  --disabled: #3a3f36;
+  --text-disabled: #6b7280;
+}
 
-  --disabled: #555f7d;
-  --text-disabled: #aab3cc;
+:root[data-theme='light'] {
+  background-image: url('/lake-louise-light.jpg');
+  --background: #fffdf0;
+  --surface: #ffffff;
+  --gray-dark: #353536;
+  --gray-light: #d5d9df;
+
+  --primary: #161718;
+  --highlight: #f97300;
+
+  --text-default: #1a1f25;
+  --text-muted: #4b5563;
+  --text-special: #f97300;
+
+  --success: #16a34a;
+  --warning: #facc15;
+  --error: #dc2626;
+  --info: #2563eb;
+
+  --link-color: var(--highlight);
+  --link-hover: #d35e00;
+
+  --border-color: #e0e0d0;
+  --disabled: #d1d5db;
+  --text-disabled: #9ca3af;
 }
