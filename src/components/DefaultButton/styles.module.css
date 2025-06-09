@@ -19,7 +19,7 @@
 }
 .green {
   composes: button;
-  background-color: var(--gray-light);
+  background-color: var(--text-special);
 }
 
 .button svg {

@@ -1,4 +1,4 @@
-import { Play } from 'lucide-react';
+import { Pause, Play } from 'lucide-react';
 import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import DefaultInput from '../DefaultInput';
@@ -52,6 +52,16 @@ export const MainForm = () => {
     }));
   };
 
+  const handleInterruptTask = (event: React.FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setState(prevState => ({
+      ...prevState,
+      activeTask: null,
+      secondsRemaining: 0,
+      formattedSecondsRemaining: '00:00',
+    }));
+  };
+
   return (
     <div>
       <form onSubmit={handleCreateNewTask} action='' className='form'>
@@ -76,8 +86,24 @@ export const MainForm = () => {
         )}
 
         <span className='formRow'>
-          <DefaultButton icon={<Play />} type={'submit'} />
-          {/* <DefaultButton icon={<Pause />} type={'button'} color='red' /> */}
+          {!state.activeTask && (
+            <DefaultButton
+              aria-label='Iniciar nova Tarefa'
+              title='Iniciar nova Tarefa'
+              icon={<Play />}
+              type={'submit'}
+            />
+          )}
+          {!!state.activeTask && (
+            <DefaultButton
+              aria-label='Interromper tarefa'
+              title='Interromper tarefa'
+              icon={<Pause />}
+              type={'button'}
+              color='red'
+              onClick={handleInterruptTask}
+            />
+          )}
         </span>
       </form>
     </div>
