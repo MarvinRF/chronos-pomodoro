@@ -44,7 +44,7 @@ export const MainForm = () => {
     setState(prevState => ({
       ...prevState,
       config: { ...prevState.config },
-      activeTaskId: newTask,
+      activeTask: newTask,
       currentCycle: nextCycle,
       secondsRemaining,
       formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
@@ -62,6 +62,7 @@ export const MainForm = () => {
             type='text'
             placeholder={'Digite o nome da Tarefa'}
             ref={taskNameRef}
+            disabled={!!state.activeTask}
           />
         </span>
         <span className='formRow'>
