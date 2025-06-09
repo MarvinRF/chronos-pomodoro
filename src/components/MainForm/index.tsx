@@ -8,6 +8,7 @@ import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
+import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 
 export const MainForm = () => {
   const { state, setState } = useTaskContext();
@@ -46,7 +47,7 @@ export const MainForm = () => {
       activeTaskId: newTask,
       currentCycle: nextCycle,
       secondsRemaining,
-      formattedSecondsRemaining: '00:00',
+      formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
       tasks: [...prevState.tasks, newTask],
     }));
   };
@@ -66,9 +67,13 @@ export const MainForm = () => {
         <span className='formRow'>
           <p>Lorem ipsum dolor sit, amet consectetur.</p>
         </span>
-        <span className='formRow'>
-          <Cycles />
-        </span>
+
+        {state.currentCycle > 0 && (
+          <span className='formRow'>
+            <Cycles />
+          </span>
+        )}
+
         <span className='formRow'>
           <DefaultButton icon={<Play />} type={'submit'} />
           {/* <DefaultButton icon={<Pause />} type={'button'} color='red' /> */}
