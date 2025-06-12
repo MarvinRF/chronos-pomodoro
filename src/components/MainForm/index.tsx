@@ -9,11 +9,13 @@ import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+import Tips from '../Tips';
 
 export const MainForm = () => {
   const { state, dispatch } = useTaskContext();
   const taskNameRef = useRef<HTMLInputElement>(null);
 
+  //ciclos
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCycleType = getNextCycleType(nextCycle);
 
@@ -61,7 +63,7 @@ export const MainForm = () => {
           />
         </span>
         <span className='formRow'>
-          <p>Lorem ipsum dolor sit, amet consectetur.</p>
+          <Tips nextCycleType={nextCycleType} />
         </span>
 
         {state.currentCycle > 0 && (
