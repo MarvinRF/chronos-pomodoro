@@ -7,23 +7,25 @@
 
 import type { TaskModel } from '../../models/TaskModel';
 
-export const TaskActionTypes = {
-  START_TASK: 'START_TASK',
-  INTERRUPT_TASK: 'INTERRUPT_TASK',
-  RESET_STATE: 'RESET_STATE',
-  MARK_CURRENT_TASK_AS_FINISHED: 'MARK_CURRENT_TASK_AS_FINISHED',
-  SET_SECONDS_REMAINING: 'SET_SECONDS_REMAINING',
+export enum TaskActionTypes {
+  START_TASK = 'START_TASK',
+  INTERRUPT_TASK = 'INTERRUPT_TASK',
+  RESET_STATE = 'RESET_STATE',
+}
+
+export type TaskActionsWithPayload = {
+  type: TaskActionTypes.START_TASK;
+  payload: TaskModel;
 };
 
-export type TaskActionModel =
+export type TaskActionsWithoutPayload =
   | {
-      type: typeof TaskActionTypes.START_TASK;
-      payload: TaskModel;
+      type: TaskActionTypes.RESET_STATE;
     }
   | {
-      type: typeof TaskActionTypes.INTERRUPT_TASK;
-      payload: TaskModel;
-    }
-  | {
-      type: typeof TaskActionTypes.RESET_STATE;
+      type: TaskActionTypes.INTERRUPT_TASK;
     };
+
+export type TaskActionModel =
+  | TaskActionsWithPayload
+  | TaskActionsWithoutPayload;
