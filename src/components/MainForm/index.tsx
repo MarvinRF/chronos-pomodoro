@@ -42,6 +42,16 @@ export const MainForm = () => {
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+    const worker = new Worker(
+      new URL('../../workers/timerWorker.js', import.meta.url),
+    );
+
+    worker.postMessage('Olá mundo');
+    worker.onmessage = function (event) {
+      console.log('Principal recebeu', event.data);
+    };
+
+    worker.terminate();
   };
 
   const handleInterruptTask = (event: React.FormEvent<HTMLButtonElement>) => {
