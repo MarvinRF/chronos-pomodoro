@@ -40,18 +40,7 @@ export const MainForm = () => {
       duration: state.config[nextCycleType],
       type: nextCycleType,
     };
-
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
-    const worker = new Worker(
-      new URL('../../workers/timerWorker.js', import.meta.url),
-    );
-
-    worker.postMessage('Olá mundo');
-    worker.onmessage = function (event) {
-      console.log('Principal recebeu', event.data);
-    };
-
-    worker.terminate();
   };
 
   const handleInterruptTask = (event: React.FormEvent<HTMLButtonElement>) => {
@@ -76,12 +65,17 @@ export const MainForm = () => {
           <Tips nextCycleType={nextCycleType} />
         </span>
 
-        {state.currentCycle > 0 && (
+        {/* 
+        Se currentCycle < 8 → sempre mostra.
+        Se currentCycle === 8 && activeTask → ainda mostra.
+        Se currentCycle === 8 && !activeTask → esconde.
+        */}
+        {(state.currentCycle < 8 ||
+          (state.currentCycle === 8 && !!state.activeTask)) && (
           <span className='formRow'>
             <Cycles />
           </span>
         )}
-
         <span className='formRow'>
           {!state.activeTask && (
             <DefaultButton
