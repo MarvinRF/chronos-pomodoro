@@ -1,17 +1,31 @@
-self.onmessage = function (event) {
-  console.log('worker.js recebeu:', event.data);
+let isRunning = false;
 
-  switch (event.data) {
-    case 'start':
-      console.log('worker.js iniciou');
-      break;
-    case 'stop':
-      console.log('worker.js parou');
-      self.close();
-      break;
-    default:
-      console.log('worker.js recebeu uma mensagem desconhecida:', event.data);
-      self.close();
-      break;
+self.onmessage = function (event) {
+  if (isRunning) {
+    return;
   }
+  isRunning = true;
+
+  const state = event.data;
+  const { activeTask, secondsRemaining } = state;
+
+  const endDate = activeTask.startDate + secondsRemaining * 1000;
+  const now = Date.now();
+  let countDownSeconds = Math.ceil((endDate - now) / 1000);
+
+  console.log(new Date(endDate));
+
+  function tick() {
+    self.postMessage(countDownSeconds);
+
+    const now = Date.now();
+    countDownSeconds = Math.floor((endDate - now) / 1000);
+
+    if (countDownSeconds > 0) {
+      setTimeout(tick, 1000);
+    } else {
+      isRunning = false;
+    }
+  }
+  tick();
 };
