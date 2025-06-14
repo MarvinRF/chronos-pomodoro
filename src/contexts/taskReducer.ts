@@ -22,21 +22,6 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
       };
     }
     case TaskActionTypes.INTERRUPT_TASK: {
-      // setState(prevState => ({
-      //   ...prevState,
-      //   activeTask: null,
-      //   secondsRemaining: 0,
-      //   formattedSecondsRemaining: '00:00',
-      //   tasks: prevState.tasks.map(task => {
-      //     if (prevState.activeTask && prevState.activeTask.id === task.id) {
-      //       return {
-      //         ...task,
-      //         interruptedDate: Date.now(),
-      //       };
-      //     }
-      //     return task;
-      //   }),
-      // }));
       return {
         ...state,
         activeTask: null,
@@ -55,6 +40,32 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
     }
     case TaskActionTypes.RESET_STATE: {
       return state;
+    }
+    case TaskActionTypes.COUNT_DOWN: {
+      return {
+        ...state,
+        secondsRemaining: action.payload.secondsRemaining,
+        formattedSecondsRemaining: formatSecondsToMinutes(
+          action.payload.secondsRemaining,
+        ),
+      };
+    }
+    case TaskActionTypes.COMPLETE_TASK: {
+      return {
+        ...state,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: '00:00',
+        tasks: state.tasks.map(task => {
+          if (state.activeTask && state.activeTask.id === task.id) {
+            return {
+              ...task,
+              completeDate: Date.now(),
+            };
+          }
+          return task;
+        }),
+      };
     }
   }
   //Seu reducer sempre deve retornar o estado
