@@ -13,7 +13,7 @@ self.onmessage = function (event) {
   const now = Date.now();
   let countDownSeconds = Math.ceil((endDate - now) / 1000);
 
-  console.log(new Date(endDate));
+  //console.log(new Date(endDate));
 
   function tick() {
     const now = Date.now();
