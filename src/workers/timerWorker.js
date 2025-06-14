@@ -16,10 +16,10 @@ self.onmessage = function (event) {
   console.log(new Date(endDate));
 
   function tick() {
-    self.postMessage(countDownSeconds);
-
     const now = Date.now();
     countDownSeconds = Math.floor((endDate - now) / 1000);
+
+    self.postMessage(countDownSeconds);
 
     if (countDownSeconds > 0) {
       setTimeout(tick, 1000);
