@@ -1,0 +1,62 @@
+.buttonContainer button {
+  min-width: auto;
+  margin: 0;
+  padding: 1rem;
+}
+.buttonContainer button svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.responsiveTable {
+  overflow-x: auto;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 64rem;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* para Safari */
+  padding: 1.6rem 1rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.responsiveTable table {
+  width: 100%;
+  min-width: 64rem;
+  font-size: 1.6rem;
+  border-collapse: collapse;
+}
+
+.responsiveTable thead th:first-child {
+  border-top-left-radius: 1rem;
+}
+
+.responsiveTable thead th:last-child {
+  border-top-right-radius: 1rem;
+}
+
+.responsiveTable tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 1rem;
+}
+
+.responsiveTable tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 1rem;
+}
+.responsiveTable th {
+  background-color: rgba(255, 255, 255, 0.541);
+}
+
+.responsiveTable td {
+  background-color: rgba(255, 255, 255, 0.141);
+}
+
+.responsiveTable th,
+.responsiveTable td {
+  text-align: left;
+  padding: 1.6rem;
+}
