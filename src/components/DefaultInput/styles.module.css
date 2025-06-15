@@ -21,3 +21,15 @@
   border-bottom: 0.2rem solid var(--primary);
   color: var(--disabled);
 }
+/* autofill do navegador (principalmente Chrome), que aplica um estilo interno ao input 
+quando o preenchimento automático é usado. 
+Esse estilo ignora background-color e não respeita seu CSS diretamente, 
+mesmo com !important. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  color: var(--primary) !important;
+}
