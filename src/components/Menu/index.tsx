@@ -45,7 +45,7 @@ export const Menu = () => {
       </RouterLink>
       <RouterLink
         className={styles.menuLink}
-        href='#'
+        href='/history'
         aria-label='Ver Histórico'
         title='Ver Histórico'
       >
@@ -53,13 +53,13 @@ export const Menu = () => {
       </RouterLink>
       <RouterLink
         className={styles.menuLink}
-        href='#'
+        href='/settings/'
         aria-label='Configurações'
         title='Configurações'
       >
         <SettingsIcon />
       </RouterLink>
-      <RouterLink
+      <a
         className={styles.menuLink}
         href='#'
         aria-label='Mudar Tema'
@@ -67,7 +67,7 @@ export const Menu = () => {
         onClick={toggleTheme}
       >
         {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-      </RouterLink>
+      </a>
     </nav>
   );
 };
