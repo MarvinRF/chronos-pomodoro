@@ -61,6 +61,15 @@
   border: none;
 }
 
+.thSort {
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.thSort:hover {
+  filter: brightness(90%);
+}
+
 .responsiveTable th,
 .responsiveTable td {
   text-align: left;
