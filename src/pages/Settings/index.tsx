@@ -8,9 +8,10 @@ import { SaveIcon } from 'lucide-react';
 import { useRef } from 'react';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { showMessage } from '../../adapters/showMessage';
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 export const Settings = () => {
-  const { state } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
   const workTimeInputRef = useRef<HTMLInputElement>(null);
   const shortBreakInputRef = useRef<HTMLInputElement>(null);
   const longBreakInputRef = useRef<HTMLInputElement>(null);
@@ -22,21 +23,21 @@ export const Settings = () => {
     const formErrors = [];
 
     const workTime = Number(workTimeInputRef.current?.value);
-    const shortBreak = Number(shortBreakInputRef.current?.value);
-    const longBreak = Number(longBreakInputRef.current?.value);
+    const shortBreakTime = Number(shortBreakInputRef.current?.value);
+    const longBreakTime = Number(longBreakInputRef.current?.value);
 
-    if (isNaN(workTime) || isNaN(shortBreak) || isNaN(longBreak)) {
+    if (isNaN(workTime) || isNaN(shortBreakTime) || isNaN(longBreakTime)) {
       formErrors.push('Por favor utilizar apenas numeros para todos os campos');
     }
     if (workTime < 1 || workTime > 99) {
       formErrors.push('Por favor utilizar valores entre 1 e 99 para foco');
     }
-    if (shortBreak < 5 || shortBreak > 30) {
+    if (shortBreakTime < 5 || shortBreakTime > 30) {
       formErrors.push(
         'Por favor utilizar valores entre 5 e 30 para descanso curto',
       );
     }
-    if (longBreak < 5 || longBreak > 60) {
+    if (longBreakTime < 5 || longBreakTime > 60) {
       formErrors.push(
         'Por favor utilizar valores entre 5 e 60 para descanso longo',
       );
@@ -47,7 +48,12 @@ export const Settings = () => {
         showMessage.error(error);
       });
     }
-    console.log('configurações salvas');
+
+    dispatch({
+      type: TaskActionTypes.CHANGE_SETTINGS,
+      payload: { workTime, shortBreakTime, longBreakTime },
+    });
+    showMessage.success('Configurações salvas com sucesso');
   };
 
   return (
