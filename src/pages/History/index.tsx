@@ -11,10 +11,12 @@ import { getTaskStatus } from '../../utils/getTaskStatus';
 import { useEffect, useState } from 'react';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+import { showMessage } from '../../adapters/showMessage';
 
 export const History = () => {
   const { state, dispatch } = useTaskContext();
   const hastasks = state.tasks.length > 0;
+  const [confirmClearHistory, setConfirmClearHistory] = useState(false);
   const [sortTaskOptions, setSortTaskOptions] = useState<SortTasksOptions>(
     () => {
       return {
@@ -37,6 +39,13 @@ export const History = () => {
     //e reordenaremos  as tasks
   }, [state.tasks]);
 
+  useEffect(() => {
+    if (!confirmClearHistory) return;
+
+    setConfirmClearHistory(false);
+    dispatch({ type: TaskActionTypes.RESET_STATE });
+  }, [confirmClearHistory, dispatch]);
+
   function handleSortTasks({ field }: Pick<SortTasksOptions, 'field'>) {
     const newDirection = sortTaskOptions.direction === 'desc' ? 'asc' : 'desc';
 
@@ -52,10 +61,14 @@ export const History = () => {
   }
 
   const HandleResetHistory = () => {
+    showMessage.dismiss();
     localStorage.removeItem('tasks');
-    if (!confirm('Deseja realmente apagar todo o historico?')) return;
-
-    dispatch({ type: TaskActionTypes.RESET_STATE });
+    showMessage.confirm(
+      'Deseja realmente apagar todo o historico?',
+      confirmation => {
+        setConfirmClearHistory(confirmation);
+      },
+    );
   };
 
   return (
