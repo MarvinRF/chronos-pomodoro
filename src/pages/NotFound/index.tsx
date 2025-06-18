@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import { Container } from '../../components/Container';
 import { GenericHtml } from '../../components/GenericHtml';
 import { Heading } from '../../components/Heading';
 import { MainTemplate } from '../../templates/MainTemplate';
 
 const NotFound = () => {
+  useEffect(() => {
+    document.title = 'Chronos Pomodoro - Página não encontrada';
+  }, []);
   return (
     <MainTemplate>
       <Container>
