@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 import { showMessage } from '../../adapters/showMessage';
+import { GenericHtml } from '../../components/GenericHtml';
 
 export const History = () => {
   const { state, dispatch } = useTaskContext();
@@ -151,9 +152,9 @@ export const History = () => {
           </div>
         )}
         {!hastasks && (
-          <div className={styles.responsiveTable}>
-            <h3 style={{ textAlign: 'center' }}>Não há tarefas no histórico</h3>
-          </div>
+          <GenericHtml>
+            <p style={{ textAlign: 'center' }}>Não há tarefas no histórico</p>
+          </GenericHtml>
         )}
       </Container>
     </MainTemplate>
