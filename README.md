@@ -1,6 +1,6 @@
 # Chronos Pomodoro
 
-**Chronos Pomodoro** é um aplicativo web desenvolvido com **React 19 + Vite**,
+**Chronos Pomodoro** é um aplicativo web desenvolvido utilizando **React 19  e Vite**,
 inspirado na técnica Pomodoro original, com recursos de personalização,
 histórico de tarefas, contagem regressiva e notificações sonoras. Projetado com
 arquitetura escalável, contexto global com `useReducer` e `Context API`, timer
